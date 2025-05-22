@@ -1,1 +1,27 @@
-<p>chart works!</p>
+<div class="chart-container">
+  <div class="chart-container__chart">
+    <canvas
+      baseChart
+      [data]="pieChartData"
+      [type]="pieChartType"
+      [options]="pieChartOptions"
+    >
+    </canvas>
+  </div>
+  <section class="chart-container__legend">
+    <ul class="chart-container__legend-list">
+      <li
+        *ngFor="let label of pieChartData.labels; let i = index"
+        class="chart-container__legend-item"
+      >
+        <span
+          class="chart-container__legend-color"
+          [style.background]="defaultColors[i]"
+        ></span>
+        <span class="chart-container__legend-label">{{ label }}</span>
+        <span class="chart-container__legend-symbol"> ? </span>
+        <nz-icon nzType="down" nzTheme="outline" style="font-size: 12px" />
+      </li>
+    </ul>
+  </section>
+</div>

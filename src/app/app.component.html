@@ -32,5 +32,17 @@
         ></svg-icon>
       </button>
     </div>
+    <section class="content__middle">
+      <div class="content__chart">
+        <app-chart></app-chart>
+      </div>
+      <div class="content__cards">
+        <app-card
+          *ngFor="let card of cards"
+          [title]="card.title"
+          [content]="card.content"
+        ></app-card>
+      </div>
+    </section>
   </div>
 </div>

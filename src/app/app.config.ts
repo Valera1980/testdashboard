@@ -14,6 +14,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideHttpClient } from '@angular/common/http';
 import { NzConfig, provideNzConfig } from 'ng-zorro-antd/core/config';
 import { provideAngularSvgIcon } from 'angular-svg-icon';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 registerLocaleData(en);
 
@@ -29,5 +30,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideNzConfig(ngZorroConfig),
     provideAngularSvgIcon(),
+    provideCharts(withDefaultRegisterables()),
   ],
 };

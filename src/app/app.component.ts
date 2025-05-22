@@ -5,6 +5,10 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { BadgeCellComponent } from './badge-cell/badge-cell.component';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { ChartComponent } from './chart/chart.component';
+import { CardComponent } from './card/card.component';
+import { Card } from './types/card.type';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -17,8 +21,29 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
     BadgeCellComponent,
     NzButtonModule,
     AngularSvgIconModule,
+    ChartComponent,
+    CardComponent,
+    NgFor,
   ],
 })
 export class AppComponent {
   title = 'testdashboard';
+  cards: Card[] = [
+    {
+      title: '50',
+      content: 'Total Students Enrolled ',
+    },
+    {
+      title: '5',
+      content: 'Badges',
+    },
+    {
+      title: '68%',
+      content: 'Completion Rate',
+    },
+    {
+      title: '5',
+      content: 'Students At Risk',
+    },
+  ];
 }
