@@ -9,6 +9,8 @@ import { ChartComponent } from './chart/chart.component';
 import { CardComponent } from './card/card.component';
 import { Card } from './types/card.type';
 import { NgFor } from '@angular/common';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { TableComponent } from './table/table.component';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +26,8 @@ import { NgFor } from '@angular/common';
     ChartComponent,
     CardComponent,
     NgFor,
+    NzTabsModule,
+    TableComponent,
   ],
 })
 export class AppComponent {

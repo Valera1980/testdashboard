@@ -9,7 +9,7 @@
         <nz-icon nzType="search" />
       </ng-template>
 
-      <nz-select ngModel="lucy" style="width: 120px" nzPlaceHolder="Groups">
+      <nz-select style="width: 120px" nzPlaceHolder="Groups">
         <nz-option nzValue="1" nzLabel="Group one"></nz-option>
         <nz-option nzValue="2" nzLabel="Group one"></nz-option>
         <nz-option nzValue="3" nzLabel="Group one"></nz-option>
@@ -43,6 +43,14 @@
           [content]="card.content"
         ></app-card>
       </div>
+    </section>
+    <section class="content__tabs">
+      <nz-tabset>
+        <nz-tab nzTitle="Badges">
+          <app-table></app-table>
+        </nz-tab>
+        <nz-tab nzTitle="Students">Students</nz-tab>
+      </nz-tabset>
     </section>
   </div>
 </div>

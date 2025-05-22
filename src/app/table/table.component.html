@@ -1,0 +1,54 @@
+<div class="table-container">
+  <nz-input-group [nzPrefix]="prefixIconSearch" [nzSuffix]="suffixIconSearch">
+    <input type="text" nz-input placeholder="Search" [formControl]="search" />
+  </nz-input-group>
+  <ng-template #prefixIconSearch>
+    <nz-icon nzType="search" />
+  </ng-template>
+  <ng-template #suffixIconSearch>
+    <nz-icon
+      nzType="close-circle"
+      nzTheme="outline"
+      *ngIf="search.value"
+      (click)="search.setValue('')"
+    />
+  </ng-template>
+  <nz-table
+    #basicTable
+    [nzData]="(data$ | async) ?? []"
+    [nzBordered]="true"
+    [nzShowPagination]="false"
+  >
+    <thead>
+      <tr>
+        @for (column of listOfColumns; track column) {
+        <th
+          [nzSortOrder]="column.sortOrder"
+          [nzSortFn]="column.sortFn"
+          [nzSortDirections]="column.sortDirections"
+        >
+          {{ column.name }}
+        </th>
+        }
+        <!-- <th nzShowSort>Badge</th>
+        <th nzShowSort>Total Goals</th>
+        <th nzShowSort>Completed</th>
+        <th nzShowSort>In Progress</th>
+        <th nzShowSort>Not Started</th>
+        <th nzShowSort>Completion Rate</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of basicTable.data">
+        <td>{{ item.badge }}</td>
+        <td>{{ item.totalGoals }}</td>
+        <td>{{ item.completed }}</td>
+        <td>{{ item.inProgress }}</td>
+        <td>{{ item.notStarted }}</td>
+        <td>
+          <nz-progress [nzPercent]="item.completionRate"></nz-progress>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
