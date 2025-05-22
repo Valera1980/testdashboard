@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import {
   NzTableModule,
   NzTableSortFn,
@@ -11,7 +16,9 @@ import {
   map,
   Observable,
   startWith,
+  Subject,
   switchMap,
+  takeUntil,
 } from 'rxjs';
 import { TableRow } from '../types/table-row.type';
 import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
@@ -46,12 +53,13 @@ interface ColumnItem {
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [TableService],
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnDestroy {
   data$!: Observable<TableRow[]>;
   search = new FormControl('');
   sortedData: TableRow[] = [];
   sortKey: string | null = null;
   sortOrder: string | null = null;
+  destroy$ = new Subject<void>();
 
   listOfColumns: ColumnItem[] = [
     {
@@ -93,6 +101,10 @@ export class TableComponent implements OnInit {
   ];
 
   constructor(private tableService: TableService) {}
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   ngOnInit(): void {
     this.data$ = this.search.valueChanges.pipe(
@@ -125,7 +137,8 @@ export class TableComponent implements OnInit {
               )
             )
           );
-      })
+      }),
+      takeUntil(this.destroy$)
     );
   }
 }
