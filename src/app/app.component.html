@@ -1,8 +1,36 @@
 <div class="main-container">
   <div class="header">
-    <p class="main-container__title">Dashboard</p>
+    <h1 class="main-container__title">Dashboard</h1>
+    <div class="main-container__bar">
+      <nz-input-group [nzPrefix]="prefixIconSearch">
+        <input type="text" nz-input placeholder="Search" />
+      </nz-input-group>
+      <ng-template #prefixIconSearch>
+        <nz-icon nzType="search" />
+      </ng-template>
+
+      <nz-select ngModel="lucy" style="width: 120px" nzPlaceHolder="Groups">
+        <nz-option nzValue="1" nzLabel="Group one"></nz-option>
+        <nz-option nzValue="2" nzLabel="Group one"></nz-option>
+        <nz-option nzValue="3" nzLabel="Group one"></nz-option>
+      </nz-select>
+
+      <app-badge-cell></app-badge-cell>
+    </div>
   </div>
   <div class="content">
-    <router-outlet></router-outlet>
+    <div class="content__bar">
+      <button nz-button nzType="link" class="content__bar-btn">
+        <nz-icon nzType="left"></nz-icon>
+        Back
+      </button>
+      <button nz-button class="content__bar-btn">
+        <svg-icon
+          src="img/more-vertical.svg"
+          alt="Badge Icon"
+          [svgStyle]="{ width: '24px', height: '24px' }"
+        ></svg-icon>
+      </button>
+    </div>
   </div>
 </div>

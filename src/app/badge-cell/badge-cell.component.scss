@@ -1,0 +1,22 @@
+.badge-cell {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  width: min-content;
+  height: 32px;
+  gap: 4px;
+  &__icon {
+    display: flex;
+    align-items: center;
+    transform: rotate(180deg);
+    color: #0b7cda;
+    height: 18px;
+    margin-bottom: 4px;
+  }
+  &__text {
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
